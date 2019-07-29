@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS选择器</title>
+    <style>
+        /*通用选择器*/
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /*元素选择器*/
+        ul li {
+            font-size: 12px;
+        }
+
+        /*ID选择器*/
+        #box {
+            margin: 10px 0;
+        }
+
+        /*类选择器*/
+        .box2 {
+            margin: 20px 0;
+        }
+
+        /*后代选择器*/
+        #box li {
+            color: #f00;
+        }
+
+        /*子选择器 孙选择器不会受到影响*/
+        #box > li {
+            color: #00f;
+        }
+
+        /*相邻同辈选择器（只是它的下一个同辈元素受影响）*/
+        .p1 + .p2 {
+            color: #f00;
+        }
+
+        /*一般同辈选择器（它后面的同辈元素都收到影响）*/
+        .p1 ~ .p2 {
+            color: #00f;
+        }
+
+        /*属性选择器*/
+        input[type="submit"] {
+            color: #fff;
+            background: red;
+        }
+
+        /*匹配属性以什么开头*/
+        a[href^='http'] {
+            color: #f00;
+        }
+
+        /*匹配属性以什么结尾*/
+        a[href$='png'] {
+            color: aquamarine;
+        }
+
+        /*匹配属性包含的字符串*/
+        a[href*='o'] {
+            font-size: 24px;
+        }
+
+        /*匹配包含属性*/
+        a[href] {
+            font-weight: bold;
+        }
+
+        /*匹配属性以空格隔开的字符串*/
+        a[rel~='next'] {
+            color: antiquewhite;
+        }
+
+        /*伪元素可以创建一些文档语言无法创建的虚拟元素*/
+        .ol::after {
+            display: inline-block;
+            content: "hello";
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            background: red;
+        }
+
+        /*伪类其实是弥补了CSS选择器的不足，用来更方便地获取信息 */
+        .ol:after {
+            display: inline-block;
+            content: "world";
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            background: red;
+        }
+
+        a:link {
+            color: #00f;
+        }
+
+        a:visited {
+            color: #989898;
+        }
+
+        a:hover {
+            color: #404040;
+        }
+
+        a:focus {
+            color: #000;
+        }
+
+        a:active {
+            color: #f00;
+        }
+
+        /*结构化伪类*/
+        /*首个元素*/
+        .box3 li:first-child {
+            color: #f00;
+        }
+
+        /*奇数*/
+        .box3 li:nth-child(odd) {
+            color: #f00;
+        }
+
+        /*偶数*/
+        .box3 li:nth-child(even) {
+            color: #00f;
+        }
+
+        /*只有一个元素*/
+        .box3 li p:only-child {
+            color: #0f0;
+        }
+
+        /*最后一个元素*/
+        /*last-child 是指匹配的对象是其所在的父元素的最后一个元素*/
+        /*last-of-type是指匹配的对象是其所在的父素的最后一个相同类型元素*/
+        .box3 li:last-child {
+            color: aqua;
+        }
+
+        .box3 li:last-of-type {
+            color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li class="item">item1</li>
+    <li class="item">
+        <ul class="box2">
+            <li class="item2">item2</li>
+            <li class="item2">item2</li>
+            <li class="item2">item2</li>
+        </ul>
+    </li>
+    <li class="item">item1</li>
+    <li class="item">item1</li>
+</ul>
+
+<div class="main">
+    <p class="p1">p1</p>
+    <p class="p2">p2</p>
+    <p class="p2">p2</p>
+</div>
+
+<!--属性选择器-->
+<a href="http://www.boblog.com">boblog.com</a>
+<a href="./boblog.png">boblog.com</a>
+<a href="/about/me">boblog.com</a>
+<a rel="pre next dot">boblog.com</a>
+<input type="submit" value="提交">
+
+<ol class="ol">
+    <li class="item3">item3</li>
+    <li class="item3">item3</li>
+    <li class="item3">item3</li>
+</ol>
+
+<ul class="box3">
+    <li class="item4">item4</li>
+    <li class="item4">item4</li>
+    <li class="item4">item4 <p class="p4">p4</p>
+    </li>
+    <li class="item4">item4</li>
+    <div class="item4">item4</div>
+    <li class="item4">item4</li>
+    <div class="item4">item4</div>
+</ul>
+</body>
+</html>
